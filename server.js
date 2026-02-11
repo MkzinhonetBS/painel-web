@@ -17,6 +17,10 @@ app.set('views', path.join(__dirname, 'views'));
 // ================= SESSION =================
 app.use(
   session({
+    store: new SQLiteStore({
+      db: 'sessions.db',
+      dir: './'
+    }),
     secret: 'painel-super-secreto-123',
     resave: false,
     saveUninitialized: false
