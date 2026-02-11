@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuários</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <h2>🔐 ADMIN</h2>
+    <p class="user">👤 <%= usuario %></p>
+
+    <nav>
+      <a href="/admin">🏠 Dashboard</a>
+      <a href="/admin/users">👥 Usuários</a>
+      <a href="/admin/keys">🔑 Keys</a>
+      <a href="/logout">🚪 Sair</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <h1>👥 Usuários cadastrados</h1>
+
+    <table class="key-table">
+      <tr>
+        <th>Usuário</th>
+        <th>Tipo</th>
+      </tr>
+
+      <% users.forEach(u => { %>
+        <tr>
+          <td><%= u.usuario %></td>
+          <td><%= u.tipo %></td>
+        </tr>
+      <% }) %>
+    </table>
+  </main>
+
+</div>
+
+</body>
+</html>

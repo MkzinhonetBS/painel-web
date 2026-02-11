@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel ADMIN</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>🔐 ADMIN</h2>
+
+    <p class="user">
+      👤 <%= usuario %>
+    </p>
+
+    <nav>
+      <a href="/admin">🏠 Dashboard</a>
+      <a href="/admin/users">👥 Usuários</a>
+      <a href="/admin/keys">🔑 Keys</a>
+      <a href="/logout" class="logout">🚪 Sair</a>
+    </nav>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <h1>Bem-vindo, <%= usuario %> 👑</h1>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>👥 Usuários</h3>
+        <p>Total cadastrados</p>
+        <span><%= totalUsers %></span>
+      </div>
+
+      <div class="card">
+        <h3>🔑 Keys</h3>
+        <p>Total ativas</p>
+        <span><%= totalKeys %></span>
+      </div>
+
+      <div class="card">
+        <h3>🟢 Sessão</h3>
+        <p>Status</p>
+        <span>ONLINE</span>
+      </div>
+
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
+.btn-danger {
+  background: linear-gradient(135deg, #ff4d4d, #b30000);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.btn-danger:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}

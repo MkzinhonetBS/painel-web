@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Keys</title>
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>🔐 ADMIN</h2>
+    <p class="user">👤 <%= usuario %></p>
+
+    <nav>
+      <a href="/admin">🏠 Dashboard</a>
+      <a href="/admin/users">👥 Usuários</a>
+      <a href="/admin/keys" class="active">🔑 Keys</a>
+      <a href="/logout">🚪 Sair</a>
+    </nav>
+  </aside>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+
+    <div class="keys-header">
+      <h1>🔑 Gerenciamento de Keys</h1>
+
+      <form action="/gerar-key" method="POST" class="key-form">
+        <input
+          type="text"
+          name="owner"
+          placeholder="Nome do usuário"
+          required
+        >
+        <button type="submit">➕ Gerar Key</button>
+      </form>
+    </div>
+
+    <!-- KEYS ATIVAS -->
+    <section class="keys-section">
+      <h2>🟢 Keys Ativas</h2>
+
+      <table class="key-table">
+        <tr>
+          <th>Key</th>
+          <th>Dono</th>
+          <th>Usuário</th>
+          <th>Tipo</th>
+          <th>Ações</th>
+        </tr>
+
+        <% keys.filter(k => k.ativo === 1).forEach(k => { %>
+          <tr>
+            <td><%= k.key %></td>
+            <td><%= k.owner %></td>
+            <td><%= k.usuario_usando ? k.usuario_usando : '—' %></td>
+            <td><%= k.tipo %></td>
+            <td style="display:flex; gap:8px">
+              <form
+                action="/admin/keys/desativar/<%= k.id %>"
+                method="POST"
+                onsubmit="return confirm('Desativar esta key?')"
+              >
+                <button class="btn-danger">❌</button>
+              </form>
+
+              <form
+                action="/admin/keys/deletar/<%= k.id %>"
+                method="POST"
+                onsubmit="return confirm('⚠️ Deletar esta key definitivamente?')"
+              >
+                <button class="btn-delete">🗑️</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+
+      </table>
+    </section>
+
+    <!-- KEYS DESATIVADAS -->
+    <section class="keys-section">
+      <h2>🔴 Keys Desativadas</h2>
+
+      <table class="key-table">
+        <tr>
+          <th>Key</th>
+          <th>Dono</th>
+          <th>Usuário</th>
+          <th>Tipo</th>
+          <th>Ações</th>
+        </tr>
+
+        <% keys.filter(k => k.ativo === 0).forEach(k => { %>
+          <tr>
+            <td><%= k.key %></td>
+            <td><%= k.owner %></td>
+            <td><%= k.usuario_usando ? k.usuario_usando : '—' %></td>
+            <td><%= k.tipo %></td>
+            <td>
+              <form
+                action="/admin/keys/deletar/<%= k.id %>"
+                method="POST"
+                onsubmit="return confirm('⚠️ Deletar esta key definitivamente?')"
+              >
+                <button class="btn-delete">🗑️ Deletar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+
+      </table>
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>

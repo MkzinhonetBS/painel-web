@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Erro de login</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .error {
+      font-size: 50px;
+      color: #ff4d4d;
+      margin-bottom: 15px;
+      animation: shake 0.6s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-8px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+
+  <!-- volta sozinho pro login -->
+  <meta http-equiv="refresh" content="3;url=/">
+</head>
+<body>
+
+  <div class="card">
+    <div class="error">✖</div>
+    <h2>Acesso negado</h2>
+    <p>Usuário, senha ou KEY incorretos</p>
+    <p style="font-size:12px;color:#aaa;">
+      Retornando ao login...
+    </p>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel de Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="card">
+    <h2>Acesso Restrito</h2>
+
+    <form action="/login" method="post">
+      <input type="text" name="key" placeholder="KEY de acesso" required>
+      <input type="text" name="usuario" placeholder="Usuário" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+      <button type="submit">ENTRAR</button>
+      <a href="/register.html">Se registrar</a>
+    </form>
+
+    <div class="footer">
+      Sistema protegido
+    </div>
+  </div>
+
+</body>
+</html>
